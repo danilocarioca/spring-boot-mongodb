@@ -7,6 +7,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import pt.sata.springmongo.domain.Post;
 import pt.sata.springmongo.domain.User;
 import pt.sata.springmongo.dto.UserDTO;
+import pt.sata.springmongo.resources.util.URL;
 import pt.sata.springmongo.services.PostService;
 import pt.sata.springmongo.services.UserService;
 
@@ -26,5 +27,12 @@ public class PostResource {
     public ResponseEntity<Post> findById(@PathVariable String id) {
         Post obj = service.findById(id);
         return ResponseEntity.ok().body(obj);
+    }
+
+    @GetMapping(value = "/titlesearch")
+    public ResponseEntity<List<Post>> findByTitle(@RequestParam(value = "text", defaultValue = "") String text) {
+    text = URL.decodeParam(text);
+    List<Post> list = service.findByTitle(text);
+        return ResponseEntity.ok().body(list);
     }
 }

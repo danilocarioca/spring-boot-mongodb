@@ -11,7 +11,6 @@ import pt.sata.springmongo.repository.PostRepository;
 import pt.sata.springmongo.repository.UserRepository;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.TimeZone;
 
