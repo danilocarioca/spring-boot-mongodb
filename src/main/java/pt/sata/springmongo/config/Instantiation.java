@@ -10,6 +10,7 @@ import pt.sata.springmongo.repository.PostRepository;
 import pt.sata.springmongo.repository.UserRepository;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.TimeZone;
 
@@ -40,5 +41,8 @@ public class Instantiation implements CommandLineRunner {
         Post post2 = new Post(null, sdf.parse("23/01/2023"), "Bom dia","Acordei bem disposto hoje!", new AuthorDTO(maria));
 
         postRepository.saveAll(Arrays.asList(post1, post2));
+
+        maria.getPosts().addAll(Arrays.asList(post1, post2));
+        userRepository.save(maria);
     }
 }
